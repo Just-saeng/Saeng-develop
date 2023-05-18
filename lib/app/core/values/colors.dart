@@ -7,3 +7,4 @@ const green = Color(0xFF41CF9F);
 const yellow = Color(0xFFEEC38E);
 const lightBlue = Color(0xFF42A5F5);
 const darkGreen = Color.fromARGB(176, 34, 169, 140);
+//색 값 지정해놓기

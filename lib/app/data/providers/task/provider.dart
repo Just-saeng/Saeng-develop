@@ -15,7 +15,7 @@ class TaskProvider {
       (element) => tasks.add(Task.fromJson(element)),
     );
     return tasks;
-  } //
+  } //readTasks는 저장된 작업을 읽어와서 tasks 리스트를 반환
 
   void writeTasks(List<Task> tasks) {
     _storage.write(taskKey, jsonEncode(tasks));
