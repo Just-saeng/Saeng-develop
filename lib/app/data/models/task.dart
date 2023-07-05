@@ -23,7 +23,8 @@ class Task extends Equatable {
         icon: icon ?? this.icon,
         color: color ?? this.color,
         todos: todos ?? this.todos,
-      );
+      ); //copy with를 쓰는 이유는 객체의 불변성을 가진다.
+//스레드 안정성과 캐싱 및 성능 개선, 예측가능한 동작
 
   factory Task.fromJson(Map<String, dynamic> json) => Task(
         //팩토리 생성자는 Json파싱과 인스턴스 생성 로직을 한 곳에 집중하여 코드를 깔끔하게 유지가능

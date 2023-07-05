@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:saeng_app/app/data/services/storage/models/task.dart';
+import 'package:saeng_app/app/data/models/task.dart';
 import 'package:saeng_app/app/data/services/storage/reporsitory.dart';
 
 //formKey: FormState를 관리하기 위한 GlobalKey입니다.
@@ -43,7 +43,8 @@ class HomeController extends GetxController {
     required this.taskRepository,
   });
 
-  final formEditCtrl = TextEditingController(); //텍스트 입력 폼을 관리하기 위함
+  final formEditCtrl =
+      TextEditingController(); //텍스트 입력 폼을 관리하기 위함 // 텍스트 필드와 값의 상태를 관리하는데 유용함
   final tabIndex = 0.obs; //선택된 탭의 인덱스를 관리하기 위한 반응형 변수
   final chipIndex = 0.obs; //현재 선택된 칩의 인덱스를 관리하는 반응형 변수
   final deleting = false.obs; //bool 타입, 삭제 중인지 여부를 관리함
@@ -68,6 +69,7 @@ class HomeController extends GetxController {
 
   bool addTask(Task task) {
     if (tasks.contains(task)) {
+      //task가 이미 icon, title, color를 가지고 있음
       return false;
     }
     tasks.add(task);
@@ -136,7 +138,7 @@ class HomeController extends GetxController {
     }
     doingTodos.add(doingTodo);
     return true;
-  }
+  } //할일 목록
 
   void updateTodo() {
     var newTodos = <Map<String, dynamic>>[];

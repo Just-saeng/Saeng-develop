@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:saeng_app/app/core/utils/keys.dart';
 
-import '../../services/storage/models/task.dart';
+import '../../models/task.dart';
 import '../../services/storage/services.dart';
 
 class TaskProvider {
