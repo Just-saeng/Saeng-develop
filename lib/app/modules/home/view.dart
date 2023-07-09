@@ -24,7 +24,7 @@ class Homepage extends GetView<HomeController> {
                 Padding(
                   padding: EdgeInsets.all(4.0.wp),
                   child: Text(
-                    'My List',
+                    'My Saeng',
                     style: TextStyle(
                       fontSize: 24.0.sp,
                       fontWeight: FontWeight.bold,
@@ -35,7 +35,8 @@ class Homepage extends GetView<HomeController> {
                   () => GridView.count(
                     crossAxisCount: 2,
                     shrinkWrap: true, // 크기를 자동으로 조정해도 ㄱㄴ
-                    physics: const ClampingScrollPhysics(),
+                    physics:
+                        const ClampingScrollPhysics(), // 스크롤 가능한 영역을 넘어가는 스크롤 동작을 제한함 바운스 효과 ㄴㄴ
                     children: [
                       ...controller.tasks.map((element) => LongPressDraggable(
                           data: element,
@@ -46,7 +47,14 @@ class Homepage extends GetView<HomeController> {
                               controller.changeDeleting(false),
                           feedback: Opacity(
                             opacity: 0.5,
-                            child: TaskCard(task: element),
+                            child: Transform.scale(
+                              //크기 줄어들게
+                              scale: 0.6,
+                              child: Transform(
+                                transform: Matrix4.skewX(-0.3), //뒤틀린 효과
+                                child: TaskCard(task: element),
+                              ),
+                            ),
                           ),
                           child: TaskCard(task: element))),
                       AddCard(),
@@ -60,6 +68,7 @@ class Homepage extends GetView<HomeController> {
         ]),
       ),
       floatingActionButton: DragTarget<Task>(
+        //task 객체를 드롭 대상으로 정의
         builder: (_, __, ____) {
           return Obx(
             () => FloatingActionButton(
@@ -70,9 +79,12 @@ class Homepage extends GetView<HomeController> {
                   EasyLoading.showInfo('Please create task first..');
                 }
               },
-              backgroundColor:
-                  controller.deleting.value ? Colors.red : darkGreen,
-              child: Icon(controller.deleting.value ? Icons.delete : Icons.add),
+              backgroundColor: controller.deleting.value
+                  ? Colors.red
+                  : darkGreen, // deleting.value 에따라 달라지는 색
+              child: Icon(controller.deleting.value
+                  ? Icons.delete
+                  : Icons.add), // 바뀌는 모양
             ),
           );
         },
