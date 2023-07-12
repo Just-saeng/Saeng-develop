@@ -6,6 +6,7 @@ import 'package:saeng_app/app/core/values/colors.dart';
 import 'package:saeng_app/app/data/models/task.dart';
 import 'package:saeng_app/app/modules/home/controller.dart';
 import 'package:saeng_app/app/modules/home/widgets/add_card.dart';
+import 'package:saeng_app/app/modules/home/widgets/add_dialog.dart';
 import 'package:saeng_app/app/modules/home/widgets/task_card.dart';
 
 class Homepage extends GetView<HomeController> {
@@ -64,7 +65,7 @@ class Homepage extends GetView<HomeController> {
               ],
             ),
           ),
-          //ReportPage()
+          //TODO:ReportPage()
         ]),
       ),
       floatingActionButton: DragTarget<Task>(
@@ -74,7 +75,8 @@ class Homepage extends GetView<HomeController> {
             () => FloatingActionButton(
               onPressed: () {
                 if (controller.tasks.isNotEmpty) {
-                  //Get.to(() => AddDialog(), transition: Transition.downToUp);
+                  Get.to(() => AddDialog(),
+                      transition: Transition.downToUp); //transition 은 애니메이션 효과
                 } else {
                   EasyLoading.showInfo('Please create task first..');
                 }
