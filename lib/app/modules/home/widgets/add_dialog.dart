@@ -3,7 +3,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:saeng_app/app/core/utils/extensions.dart';
 import 'package:saeng_app/app/modules/home/controller.dart';
-
 import '../../../core/values/colors.dart';
 
 class AddDialog extends StatelessWidget {

@@ -5,6 +5,7 @@ import 'package:saeng_app/app/modules/home/controller.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import '../../../data/models/task.dart';
+import '../../detail/view.dart';
 
 class TaskCard extends StatelessWidget {
   final homeCtrl = Get.find<HomeController>();
@@ -20,7 +21,7 @@ class TaskCard extends StatelessWidget {
       onTap: () {
         homeCtrl.changeTask(task);
         homeCtrl.changeTodo(task.todos ?? []);
-        //Get.to(() => DetailPage());
+        Get.to(() => DetailPage());
       },
       child: Container(
         width: cardWidth / 2,
