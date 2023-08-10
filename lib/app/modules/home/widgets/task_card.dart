@@ -26,36 +26,50 @@ class TaskCard extends StatelessWidget {
       child: Container(
         width: cardWidth / 2,
         height: cardWidth / 2,
-        margin: EdgeInsets.all(3.0.wp),
+        margin: EdgeInsets.all(2.1.wp),
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
           color: Colors.white,
           boxShadow: [
             BoxShadow(
               color: Colors.grey[400]!,
               blurRadius: 8,
-              offset: const Offset(0, 7),
+              offset: const Offset(0, 2),
             ),
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            StepProgressIndicator(
-              totalSteps: homeCtrl.isTodoEmpty(task) ? 1 : task.todos!.length,
-              currentStep:
-                  homeCtrl.isTodoEmpty(task) ? 0 : homeCtrl.getDoneTodo(task),
-              size: 5,
-              padding: 0,
-              selectedGradientColor: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [color.withOpacity(0.5), color],
-              ),
-              unselectedGradientColor: const LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.white, Colors.white],
-              ),
+            Row(
+              children: [
+                const SizedBox(
+                  width: 12,
+                ),
+                SizedBox(
+                  width: 140,
+                  child: StepProgressIndicator(
+                    roundedEdges: const Radius.circular(10),
+                    totalSteps:
+                        homeCtrl.isTodoEmpty(task) ? 1 : task.todos!.length,
+                    currentStep: homeCtrl.isTodoEmpty(task)
+                        ? 0
+                        : homeCtrl.getDoneTodo(task),
+                    size: 5,
+                    padding: 0,
+                    selectedGradientColor: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [color.withOpacity(0.5), color],
+                    ),
+                    unselectedGradientColor: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Colors.white, Colors.white],
+                    ),
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding: EdgeInsets.all(6.0.wp),
@@ -81,6 +95,7 @@ class TaskCard extends StatelessWidget {
                     height: 2.0.wp,
                   ),
                   Text(
+                    //?---task 몇개인지
                     '${task.todos?.length ?? 0} Tasks',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,

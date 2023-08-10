@@ -28,39 +28,52 @@ class Homepage extends GetView<HomeController> {
                   child: Text(
                     'My Saeng',
                     style: TextStyle(
-                      fontSize: 24.0.sp,
+                      fontSize: 22.0.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 0.00001.wp),
+                  child: const Divider(
+                    // 구분선 코드
+                    thickness: 1.7,
+                  ),
+                ),
                 Obx(
-                  () => GridView.count(
-                    crossAxisCount: 2,
-                    shrinkWrap: true, // 크기를 자동으로 조정해도 ㄱㄴ
-                    physics:
-                        const ClampingScrollPhysics(), // 스크롤 가능한 영역을 넘어가는 스크롤 동작을 제한함 바운스 효과 ㄴㄴ
-                    children: [
-                      ...controller.tasks.map((element) => LongPressDraggable(
-                          data: element,
-                          onDragStarted: () => controller.changeDeleting(true),
-                          onDraggableCanceled: (velocity, offset) =>
-                              controller.changeDeleting(false),
-                          onDragEnd: (details) =>
-                              controller.changeDeleting(false),
-                          feedback: Opacity(
-                            opacity: 0.5,
-                            child: Transform.scale(
-                              //크기 줄어들게
-                              scale: 0.6,
-                              child: Transform(
-                                transform: Matrix4.skewX(-0.3), //뒤틀린 효과
-                                child: TaskCard(task: element),
+                  () => Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      shrinkWrap: true, // 크기를 자동으로 조정해도 ㄱㄴ
+                      physics:
+                          const ClampingScrollPhysics(), // 스크롤 가능한 영역을 넘어가는 스크롤 동작을 제한함 바운스 효과 ㄴㄴ
+                      children: [
+                        ...controller.tasks.map((element) => LongPressDraggable(
+                            data: element,
+                            onDragStarted: () =>
+                                controller.changeDeleting(true),
+                            onDraggableCanceled: (velocity, offset) =>
+                                controller.changeDeleting(false),
+                            onDragEnd: (details) =>
+                                controller.changeDeleting(false),
+                            feedback: Opacity(
+                              opacity: 0.5,
+                              child: Transform.scale(
+                                //크기 줄어들게
+                                scale: 0.6,
+                                child: Transform(
+                                  transform: Matrix4.skewX(-0.3), //뒤틀린 효과
+                                  child: TaskCard(task: element),
+                                ),
                               ),
                             ),
-                          ),
-                          child: TaskCard(task: element))),
-                      AddCard(),
-                    ],
+                            child: TaskCard(task: element))),
+                        AddCard(),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -103,22 +116,27 @@ class Homepage extends GetView<HomeController> {
           highlightColor: Colors.transparent,
         ),
         child: Obx(
-          () => BottomNavigationBar(
-            onTap: (int index) => controller.changeTabIndex(index),
-            currentIndex: controller.tabIndex.value,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            selectedItemColor: darkGreen,
-            items: const [
-              BottomNavigationBarItem(
-                label: 'Home',
-                icon: Icon(Icons.apps),
-              ),
-              BottomNavigationBarItem(
-                label: 'Report',
-                icon: Icon(Icons.data_usage),
-              )
-            ],
+          () => SizedBox(
+            height: 60,
+            child: BottomNavigationBar(
+              onTap: (int index) => controller.changeTabIndex(index),
+              currentIndex: controller.tabIndex.value,
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+              unselectedItemColor: Colors.white,
+              selectedItemColor: darkGreen,
+              backgroundColor: const Color.fromARGB(255, 80, 79, 90),
+              items: const [
+                BottomNavigationBarItem(
+                  label: 'Home',
+                  icon: Icon(Icons.apps),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Report',
+                  icon: Icon(Icons.data_usage),
+                )
+              ],
+            ),
           ),
         ),
       ),

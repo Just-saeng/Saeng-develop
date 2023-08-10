@@ -138,6 +138,7 @@ class ReportPage extends StatelessWidget {
   }
 
   Padding _buildStatus(Color color, int number, String title) {
+    //?---buildstatus함수 정의
     return Padding(
       padding: EdgeInsets.only(left: 3.0.wp),
       child: Row(

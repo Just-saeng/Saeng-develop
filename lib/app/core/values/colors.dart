@@ -6,5 +6,5 @@ const deepPink = Color(0xFFFA63C6);
 const green = Color(0xFF41CF9F);
 const yellow = Color(0xFFEEC38E);
 const lightBlue = Color(0xFF42A5F5);
-const darkGreen = Color.fromARGB(176, 34, 169, 140);
+const darkGreen = Color.fromARGB(255, 132, 118, 223);
 //색 값 지정해놓기
