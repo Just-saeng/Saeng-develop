@@ -8,6 +8,7 @@ import 'package:saeng_app/app/modules/home/controller.dart';
 import 'package:saeng_app/app/modules/home/widgets/add_card.dart';
 import 'package:saeng_app/app/modules/home/widgets/add_dialog.dart';
 import 'package:saeng_app/app/modules/home/widgets/task_card.dart';
+import 'package:saeng_app/app/modules/report/view.dart';
 
 class Homepage extends GetView<HomeController> {
   const Homepage({super.key}); // 홈페이지의 상태 관리 HomeController 와 연결됨
@@ -65,7 +66,7 @@ class Homepage extends GetView<HomeController> {
               ],
             ),
           ),
-          //TODO:ReportPage()
+          ReportPage(),
         ]),
       ),
       floatingActionButton: DragTarget<Task>(

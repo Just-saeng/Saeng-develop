@@ -12,17 +12,10 @@ class DoingList extends StatelessWidget {
     return Obx(() => homeCtrl.doingTodos.isEmpty && homeCtrl.doneTodos.isEmpty
         ? Column(
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10.0.wp),
-                child: Image.asset(
-                  'assets/images/list-2828012.png',
-                  fit: BoxFit.cover,
-                  width: 60.0.wp,
-                ),
-              ),
               Text(
-                'Add Task',
+                'Add Saeng!',
                 style: TextStyle(
+                  color: Colors.indigo,
                   fontWeight: FontWeight.bold,
                   fontSize: 16.0.sp,
                 ),
@@ -37,8 +30,8 @@ class DoingList extends StatelessWidget {
                   .map(
                     (element) => Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 9.0.wp,
-                        vertical: 3.0.wp,
+                        horizontal: 9.0.wp, //체크박스 앞쪽 공백
+                        vertical: 3.0.wp, //체크박스간의 위아래 간격
                       ),
                       child: Row(
                         children: [
@@ -58,18 +51,20 @@ class DoingList extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 4.0.wp),
                             child: Text(
                               element['title'],
-                              overflow: TextOverflow.ellipsis,
+                              overflow:
+                                  TextOverflow.ellipsis, //텍스트가 길어서 넘치면 자르기(...)
                             ),
                           ),
                         ],
                       ),
                     ),
                   )
-                  .toList(),
-              if (homeCtrl.doingTodos.isNotEmpty)
+                  .toList(), // homeCtrl.doingTodos을 .map과 .toList로 리스트 형태로 변환하여 리스트뷰를 쓸 수 있도록함
+              if (homeCtrl.doingTodos.isNotEmpty) //리스트가 비어있지 않다면
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.0.wp),
                   child: const Divider(
+                    // 구분선 코드
                     thickness: 2,
                   ),
                 )

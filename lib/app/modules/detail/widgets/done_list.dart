@@ -21,7 +21,7 @@ class DoneList extends StatelessWidget {
                     vertical: 1.0.wp,
                   ),
                   child: Text(
-                    'Completed(${homeCtrl.doneTodos.length})',
+                    '완료(${homeCtrl.doneTodos.length})',
                     style: TextStyle(
                       fontSize: 14.0.sp,
                       color: Colors.grey,
@@ -34,13 +34,14 @@ class DoneList extends StatelessWidget {
                           direction: DismissDirection.endToStart,
                           onDismissed: (_) => homeCtrl.deleteDoneTodo(element),
                           background: Container(
-                            color: Colors.red.withOpacity(0.8),
+                            color: const Color.fromARGB(255, 215, 62, 62)
+                                .withOpacity(0.8),
                             alignment: Alignment.centerRight,
                             child: Padding(
-                              padding: EdgeInsets.only(right: 5.0.wp),
+                              padding: EdgeInsets.only(right: 3.0.wp),
                               child: const Icon(
                                 Icons.delete,
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 255, 255, 255),
                               ),
                             ),
                           ),

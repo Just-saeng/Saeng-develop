@@ -156,12 +156,12 @@ class HomeController extends GetxController {
     var doingTodo = {'title': title, 'done': false};
     int index = doingTodos.indexWhere(
         (element) => mapEquals<String, dynamic>(doingTodo, element));
-    doingTodos.removeAt(index);
+    doingTodos.removeAt(index); //dointodo에서 체크한 항목 삭제
     var doneTodo = {'title': title, 'done': true};
-    doneTodos.add(doneTodo);
-    doingTodos.refresh();
-    doneTodos.refresh();
-  }
+    doneTodos.add(doneTodo); //done todo 에 추가
+    doingTodos.refresh(); //업데이트
+    doneTodos.refresh(); //업데이트
+  } // 체크 박스에
 
   deleteDoneTodo(dynamic doneTodo) {
     int index = doneTodos
@@ -182,7 +182,7 @@ class HomeController extends GetxController {
       }
     }
     return res;
-  }
+  } // DoneTodo의 개수
 
   void changeTabIndex(int index) {
     tabIndex.value = index;

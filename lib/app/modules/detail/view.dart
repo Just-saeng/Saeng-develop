@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:saeng_app/app/modules/detail/widgets/doing_list.dart';
+import 'package:saeng_app/app/modules/detail/widgets/done_list.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import '../../core/utils/extensions.dart';
@@ -147,7 +148,7 @@ class DetailPage extends StatelessWidget {
                 ),
               ),
               DoingList(),
-              //DoneList(),
+              DoneList(),
             ],
           ),
         ),
